@@ -7,6 +7,8 @@ import ScrollToTop from './components/ScrollToTop';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from './components/footer/Footer';
+import categories from './data/categories';
+import CategoryPage from './pages/CategoryPage';
 
 function App() {
 
@@ -21,6 +23,7 @@ function App() {
 
           <Route path="/" element={<HomePage />} />
           <Route path="/cocktail/:slug" element={<DetailPage />} />
+          <Route path="/category/:slug" element={<CategoryPage />} />
 
         </Routes>
         <Footer />

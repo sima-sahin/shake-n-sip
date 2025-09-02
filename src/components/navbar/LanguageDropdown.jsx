@@ -19,11 +19,11 @@ const LanguageDropdown = () => {
       <div
         tabIndex={0}
         role="button"
-        className="btn m-1 bg-[#7B3306] text-white flex items-center gap-2 px-3 py-2 rounded-lg transition"
+        className="btn m-1 bg-transparent border-none shadow-none text-[#7B3306] flex items-center gap-2 px-3 py-2 rounded-lg transition"
       >
         <FaGlobe className="text-lg" />
-        <span className="hidden sm:inline">{label}</span>
-        <FaChevronDown className="text-xs" />
+        <span className="hidden sm:inline text-base hover:underline active:underline">{label}</span>
+        <FaChevronDown className="text-sm" />
       </div>
 
       <ul

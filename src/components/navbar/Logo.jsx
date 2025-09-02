@@ -21,7 +21,7 @@ const Logo = () => {
     <img 
       src={logo} 
       alt="shake-n-sip" 
-      className="w-[50px] sm:w-[170px] md:w-[190px] lg:w-[230px] rounded-md cursor-pointer"
+      className="w-[45px] sm:w-[160px] md:w-[190px] lg:w-[220px] rounded-md cursor-pointer"
       onClick={() => navigate("/")}
     />
   );

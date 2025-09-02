@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSearchHistory } from "../../redux/slices/searchSlice";
 import cocktails from "../../data/cocktails"; // database
 import { useNavigate } from "react-router-dom";
-import { slugify } from "../../utils/slugify";
+import slugify from "../../utils/slugify";
 
 const SearchBar = () => {
 

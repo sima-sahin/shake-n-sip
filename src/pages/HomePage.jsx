@@ -8,10 +8,6 @@ const HomePage = () => {
 
   const [activeTab, setActiveTab] = useState("all");
 
-  // useEffect(() => {
-  //   setActiveTab("all");
-  // }, []);
-
   return (
     <>
       <Banner />
