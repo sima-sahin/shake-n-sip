@@ -5,6 +5,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import categories from "../../data/categories.js";
+import slugify from "../../utils/slugify.js";
 
 const Footer = () => {
 
@@ -12,7 +14,7 @@ const Footer = () => {
 
     return (
         <footer className="w-full border-t border-[#DC8158] bg-[#EEDFD7] mt-20">
-            <div className="w-full mx-auto px-6 md:px-12 lg:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="w-full mx-auto px-6 md:px-12 lg:px-16 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 
                 {/* LOGO - INTRODUCTION */}
                 <div className="flex flex-col items-center md:items-start">
@@ -32,10 +34,24 @@ const Footer = () => {
                 <div className="flex flex-col">
                     <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] transition">Home</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] transition">Cocktails</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] transition">About Us</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] transition">Contact</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Home</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Cocktails</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">About Us</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Contact</NavLink></li>
+                    </ul>
+                </div>
+
+                {/* COCKTAIL CATEGORIES */}
+                <div className="flex flex-col">
+                    <h3 className="text-lg font-semibold mb-4">Cocktail Categories</h3>
+                    <ul className="space-y-2">
+                        {categories.map((value) => {
+                            return (
+                                <li>
+                                    <NavLink to={`/category/${slugify(value)}`} className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{value}</NavLink>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
 

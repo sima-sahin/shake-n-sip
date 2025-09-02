@@ -38,7 +38,7 @@ const DetailPage = () => {
         {/* BACK BUTTON */}
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 text-[#E17C55] hover:underline active:underline flex items-center gap-2 cursor-pointer pl-2 md:pl-4 text-sm md:text-md"
+          className="mb-6 sm:mb-4 md:mb-1 lg:mb-2 text-[#E17C55] hover:underline active:underline flex items-center gap-2 cursor-pointer pl-2 md:pl-4 text-sm md:text-md"
         >
           ← Back to cocktails
         </button>

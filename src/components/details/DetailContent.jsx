@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaRegCopy } from "react-icons/fa";
 import { toast } from "react-toastify";
 import HeartButton from '..//HeartButton.jsx';
+import { Link } from 'react-router-dom';
+import slugify from '../../utils/slugify.js';
 
 const DetailContent = ({ cocktail, slug }) => {
 
@@ -65,6 +67,17 @@ const DetailContent = ({ cocktail, slug }) => {
 
             {/* NAME */}
             <div className="flex-1 mx-auto px-4 md:px-0">
+
+                {/* CATEGORY */}
+                <div className='text-xl uppercase hover:underline active:underline mb-4'>
+                    <Link to={`/category/${slugify(cocktail.category)}`}>{cocktail.category === "Hot Cocktail" && "Beer Cocktail" 
+                    ?
+                    <p>{cocktail.category}S</p>
+                    :
+                    <p>{cocktail.category} COCKTAILS</p>
+                    }</Link>
+                </div>
+
                 <div className='relative'>
                     <h1 className="text-xl md:text-2xl lg:text-3xl font-bold my-2">{cocktail.name}</h1>
 
@@ -74,9 +87,8 @@ const DetailContent = ({ cocktail, slug }) => {
                     </div>
                 </div>
 
-                {/* CATEGORY & TASTE PROFILE */}
+                {/* TASTE PROFILE */}
                 <div className='mb-2'>
-                    <p className="text-sm">{cocktail.category}</p>
                     {cocktail.tasteProfile && (
                         <p className="text-xs md:text-sm mt-2 text-[#E37C55]">
                             {cocktail.tasteProfile
@@ -151,7 +163,7 @@ const DetailContent = ({ cocktail, slug }) => {
 
                     <div className='mt-4'>
                         <h2 className="text-md md:text-lg lg:text-xl font-semibold">Alcohol Level</h2>
-                        <p className="text-gray-700">{cocktail.alcoholLevel.charAt(0).toUpperCase()  + cocktail.alcoholLevel.slice(1).toLowerCase()}
+                        <p className="text-gray-700">{cocktail.alcoholLevel.charAt(0).toUpperCase() + cocktail.alcoholLevel.slice(1).toLowerCase()}
                         </p>
                     </div>
                 </div>

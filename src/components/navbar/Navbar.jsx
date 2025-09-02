@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import SearchBar from './SearchBar';
 import LanguageDropdown from './LanguageDropdown';
+import CategoriesDropdown from './CategoriesDropdown';
 
 const Navbar = () => {
 
@@ -18,7 +19,8 @@ const Navbar = () => {
       </div>
 
       {/* RIGHT */}
-      <div className="">
+      <div className="flex items-center justify-center md:gap-4">
+        <CategoriesDropdown />
         <LanguageDropdown />
       </div>
     </nav>
