@@ -11,7 +11,7 @@ const Container = ({ value }) => {
   return (
     <div
       onClick={handleClick}
-      className="bg-amber-50 rounded-lg w-[200px] md:w-[250px] lg:w-[300px] h-[450px] overflow-hidden cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 text-left"
+      className="bg-amber-50 rounded-lg w-[200px] md:w-[250px] lg:w-[300px] h-[450px] overflow-hidden cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 text-left shadow-md"
     >
       <img
         src={value.image}

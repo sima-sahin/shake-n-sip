@@ -64,7 +64,7 @@ const SearchBar = () => {
     <div ref={wrapperRef} className="relative flex justify-center w-full">
       <form
         onSubmit={handleSearch}
-        className="relative w-[80%] sm:w-[75%] md:w-[70%] lg:w-[60%]"
+        className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%]"
       >
         <IoSearch className="absolute left-3 top-1/2 text-xl transform -translate-y-1/2 text-[#E17C55]" />
         <input

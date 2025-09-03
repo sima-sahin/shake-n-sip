@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
 
       {/* RIGHT */}
-      <div className="flex items-center justify-center md:gap-4">
+      <div className="flex items-center justify-center mr-[-10px] md:mr-0 space-x-[-10px] md:space-x-0 md:gap-4">
         <CategoriesDropdown />
         <LanguageDropdown />
       </div>

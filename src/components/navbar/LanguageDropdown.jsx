@@ -21,9 +21,9 @@ const LanguageDropdown = () => {
         role="button"
         className="btn m-1 bg-transparent border-none shadow-none text-[#7B3306] flex items-center gap-2 px-3 py-2 rounded-lg transition"
       >
-        <FaGlobe className="text-lg" />
+        <FaGlobe className="text-md sm:text-lg" />
         <span className="hidden sm:inline text-base hover:underline active:underline">{label}</span>
-        <FaChevronDown className="text-sm" />
+        <FaChevronDown className="text-xs sm:text-sm -ml-1 md:ml-0" />
       </div>
 
       <ul

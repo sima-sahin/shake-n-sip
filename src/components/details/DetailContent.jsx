@@ -70,12 +70,11 @@ const DetailContent = ({ cocktail, slug }) => {
 
                 {/* CATEGORY */}
                 <div className='text-xl uppercase hover:underline active:underline mb-4'>
-                    <Link to={`/category/${slugify(cocktail.category)}`}>{cocktail.category === "Hot Cocktail" && "Beer Cocktail" 
-                    ?
-                    <p>{cocktail.category}S</p>
-                    :
-                    <p>{cocktail.category} COCKTAILS</p>
-                    }</Link>
+                    <Link to={`/category/${slugify(cocktail.category)}`}>{(cocktail.category === "Hot Cocktail" || cocktail.category === "Beer Cocktail") ? (
+                        <p>{cocktail.category}S</p>
+                    ) : (
+                        <p>{cocktail.category} COCKTAILS</p>
+                    )}</Link>
                 </div>
 
                 <div className='relative'>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import slugify from "../../utils/slugify.js";
 
 const CategoriesDropdown = () => {
+
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -34,9 +35,9 @@ const CategoriesDropdown = () => {
                 onClick={handleToggle}
                 className="btn m-1 bg-transparent border-none shadow-none text-[#7B3306] flex items-center gap-2 px-3 py-2 rounded-lg transition"
             >
-                <BiCategory className='md:hidden text-xl' />
+                <BiCategory className='md:hidden text-lg sm:text-xl' />
                 <span className="hidden md:inline text-base hover:underline active:underline">Categories</span>
-                <FaChevronDown className="text-sm" />
+                <FaChevronDown className="text-xs sm:text-sm -ml-1 md:ml-0" />
             </div>
 
             {isOpen && (
