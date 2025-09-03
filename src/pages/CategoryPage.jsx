@@ -33,12 +33,11 @@ const CategoryPage = () => {
                 </button>
 
                 <div className='text-3xl uppercase mb-6 md:mb-10 font-semibold'>
-                    {slug === "Hot Cocktail" && "Beer Cocktail" 
-                    ?
-                    <p>{slug.replace("-", " ")} S</p>
-                    :
-                    <p>{slug.replace("-", " ")} COCKTAILS</p>
-                    }
+                    {(slug === "hot-cocktail" || slug === "beer-cocktail") ? (
+                        <p>{slug.replace("-", " ")}S</p>
+                    ) : (
+                        <p>{slug.replace("-", " ")} COCKTAILS</p>
+                    )}
                 </div>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4 sm:mx-6 md:mx-8 lg:mx-14l'>

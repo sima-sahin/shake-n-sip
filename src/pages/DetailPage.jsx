@@ -6,6 +6,8 @@ import SideList from '../components/details/SideList.jsx';
 import SpecialCocktails from '../components/details/SpecialCocktails.jsx';
 import SuggestedCocktails from '../components/details/SuggestedCocktails.jsx';
 import DetailContent from '../components/details/DetailContent.jsx';
+import CommentBox from '../components/CommentBox.jsx';
+import RecommendationNav from '../components/RecommendationNav.jsx';
 
 const DetailPage = () => {
 
@@ -59,6 +61,16 @@ const DetailPage = () => {
             {/* TIKI COCKTAILS FOR LARGE SCREENS */}
             <div className='hidden md:block mt-10'>
               <SpecialCocktails />
+            </div>
+
+            {/* COMMENTS */}
+            <div className='mt-12 md:mt-20'>
+              <CommentBox />
+            </div>
+
+            {/* CATEGORY RECOMMENDATIONS */}
+            <div className='mt-12 md:mt-20'>
+              <RecommendationNav currentCategory={cocktail.category} />
             </div>
 
           </div>

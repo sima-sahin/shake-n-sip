@@ -7,7 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from './components/footer/Footer';
-import categories from './data/categories';
+// import categories from './data/categories';
 import CategoryPage from './pages/CategoryPage';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <>
 
       <BrowserRouter>
-        <ToastContainer position="top-center" autoClose={2000} />
+        <ToastContainer position="top-right" autoClose={2000} />
         <ScrollToTop />
         <Navbar />
         <Routes>
