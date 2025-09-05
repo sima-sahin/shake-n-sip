@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import HeartButton from "./HeartButton.jsx";
 import { useSelector } from "react-redux";
 import Pagination from "./Pagination.jsx";
-
+import { useTranslation } from "react-i18next";
 
 function CocktailsList({ activeTab }) {
-
   const navigate = useNavigate();
   const favorites = useSelector((state) => state.favorites.favorites);
+
+  const { t, i18n } = useTranslation();
 
   // SEPARATE STATES FOR ALL COCKTAILS AND FAVORITES
   const [pageAll, setPageAll] = useState(1);
@@ -28,10 +29,10 @@ function CocktailsList({ activeTab }) {
 
   // RESPONSIVE ITEMS PER PAGE
   const getItemsPerPage = () => {
-    if (window.innerWidth < 640) return 6;   // MOBILE
-    if (window.innerWidth < 768) return 8;   // SMALL
-    if (window.innerWidth < 1024) return 9;  // MEDIUM
-    return 12;                               // LARGE+
+    if (window.innerWidth < 640) return 6; // MOBILE
+    if (window.innerWidth < 768) return 8; // SMALL
+    if (window.innerWidth < 1024) return 9; // MEDIUM
+    return 12; // LARGE+
   };
 
   const itemsPerPage = getItemsPerPage();
@@ -50,14 +51,11 @@ function CocktailsList({ activeTab }) {
   return (
     <div ref={listRef}>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4 sm:mx-6 md:mx-8 lg:mx-14">
-
         {filteredCocktails.length <= 0 ? (
-          <div className="text-lg my-6">
-            You don't have any favorite cocktails yet.
-          </div>
+          <div className="text-lg my-6">{t("noFavorites")}</div>
         ) : (
           <>
-            {paginatedCocktails.map(value => (
+            {paginatedCocktails.map((value) => (
               <div
                 key={value.slug}
                 className="bg-amber-50 rounded-lg text-amber-900 cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 text-left shadow-md"
@@ -73,15 +71,17 @@ function CocktailsList({ activeTab }) {
                     <h2 className="text-xl font-bold">{value.name}</h2>
                     <HeartButton cocktail={value} size={22} />
                   </div>
-                  <p className="my-1 text-sm lg:text-base">{value.category}</p>
+                  <p className="my-1 text-sm lg:text-base">
+                    {t(`categories.${value.category}`)}
+                  </p>
                   {value.tasteProfile && (
                     <p className="text-xs md:text-sm mb-2 text-[#E37C55]">
-                      {value.tasteProfile
-                        .map(item => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
-                        .join(", ")}
+                      {value.tasteProfile.map((item) => t(`tasteProfiles.${item}`)).join(", ")}
                     </p>
                   )}
-                  <p className="line-clamp-5">{value.introduction}</p>
+                  <p className="text-stone-500 line-clamp-5">
+                    {value.introduction[i18n.language]}
+                  </p>
                 </div>
               </div>
             ))}

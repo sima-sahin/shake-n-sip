@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebaseConfig";
 import { collection, addDoc, onSnapshot, serverTimestamp, orderBy, query } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const CommentBox = () => {
+
     const [name, setName] = useState("");
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
+
+    const { t } = useTranslation();
 
     // LISTEN TO COMMENTS COLLECTION IN REAL-TIME
     useEffect(() => {
@@ -50,22 +54,22 @@ const CommentBox = () => {
     };
 
     return (
-        <div className="p-6 bg-[#FFFBEB] rounded-xl shadow-md w-[85%] mx-auto my-4">
+        <div className="p-6 bg-[#FFFBEB] rounded-xl shadow-md w-[95%] sm:w-[90%] md:w-[85%] mx-auto my-4">
 
-            <h2 className="text-2xl font-semibold md:text-left mt-4">Leave a Comment</h2>
-            <p className="text-base md:text-left mb-6">Feel free to share your ideas! We are not going to publish them.</p>
+            <h2 className="text-2xl font-semibold md:text-left mt-4">{t("leaveComment")}</h2>
+            <p className="text-base md:text-left mb-6">{t("shareComments")}</p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-3 mb-2">
                 <input
                     type="text"
-                    placeholder="Your Name"
+                    placeholder={t("placeholders.namePlaceholder")}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                     className="border px-2 py-3 rounded-lg focus:outline-none"
                 />
                 <textarea
-                    placeholder="Your Comment"
+                    placeholder={t("placeholders.commentPlaceholder")}
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     required
@@ -76,7 +80,7 @@ const CommentBox = () => {
                         type="submit"
                         className="bg-[#E17C55] text-white px-4 py-2 w-[25%] md:w-[20%] lg:w-[15%] rounded-lg hover:bg-[#b15e3e] transition cursor-pointer"
                     >
-                        Post
+                        {t("post")}
                     </button>
                 </div>
 

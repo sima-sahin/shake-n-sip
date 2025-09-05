@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from "../../assets/logos/logo.png";
 import quizStarter from "../../assets/logos/quiz-starter2.png";
+import { useTranslation } from "react-i18next";
 
 const QuizEntrance = ({ isOpen, onClose, setIsStarted }) => {
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -27,15 +30,15 @@ const QuizEntrance = ({ isOpen, onClose, setIsStarted }) => {
             <img src={logo} alt="shake-and-sip-logo" className="w-50 md:w-60 mt-4 mb-10" />
 
             {/* HEADER */}
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Find Your Perfect Cocktail</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t("quiz.title")}</h2>
             <p className="text-md md:text-lg mb-4 sm:mb-6 md:mb-8">
-              Answer a few quick questions and we'll recommend the cocktail that matches your vibe.
+              {t("quiz.description")}
             </p>
             <button
               onClick={() => setIsStarted(true)}
               className="border-2 border-[#86d7dd] text-[#86d7dd] px-4 py-2 md:px-6 md:py-3 text-lg hover:bg-[#3da7af] hover:border-[#3da7af] hover:text-[#FFF9F1] active:bg-[#3da7af] active:border-[#3da7af] active:text-[#FFF9F1] active:scale-95 cursor-pointer rounded-lg transition"
             >
-              Start the Quiz
+              {t("quiz.startButton")}
             </button>
           </div>
         </div>

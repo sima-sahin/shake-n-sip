@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuizResult from "./QuizResult";
 import QuizEntrance from "./QuizEntrance";
 import QuizQuestions from "./QuizQuestions";
@@ -10,6 +10,18 @@ const QuizModal = ({ isOpen, onClose }) => {
   const [history, setHistory] = useState([]);
   const [resultSlug, setResultSlug] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  // SCROLL LOCKING
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"; // SCROLL GETS LOCKED
+    } else {
+      document.body.style.overflow = "auto"; // SCROLL GETS UNLOCKED
+    }
+    return () => {
+      document.body.style.overflow = "auto"; // CLEANUP
+    };
+  }, [isOpen]);
 
   // Resetting quiz to initial state
   const handleRestart = () => {

@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import HeartButton from "../HeartButton";
+import { useTranslation } from "react-i18next";
 
 const Container = ({ value }) => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const handleClick = () => {
     navigate(`/cocktail/${value.slug}`); // routing
@@ -19,25 +21,22 @@ const Container = ({ value }) => {
         className="w-full h-80 md:h-40 object-cover"
       />
       <div className="p-4">
-
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold ">{value.name}</h2>
           {/* FAVORITES BUTTON */}
-          <HeartButton cocktail={value} size={20}/>
+          <HeartButton cocktail={value} size={20} />
         </div>
 
-        <p className="text-sm mt-1">{value.category}</p>
+        <p className="text-sm mt-1">{t(`categories.${value.category}`)}</p>
         {value.tasteProfile && (
           <p className="text-xs md:text-sm mt-2 text-[#E37C55]">
-            {value.tasteProfile
-              .map(item => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
-              .join(", ")}
+            {value.tasteProfile.map((item) => t(`tasteProfiles.${item}`)).join(", ")}
           </p>
         )}
 
         {/* INTRODUCTION MAX 3 LINES LONG */}
         <p className="text-[#E37C55] text-sm mt-2 line-clamp-3">
-          {value.introduction}
+          {value.introduction[i18n.language]}
         </p>
       </div>
     </div>
