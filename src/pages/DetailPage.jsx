@@ -8,11 +8,13 @@ import SuggestedCocktails from '../components/details/SuggestedCocktails.jsx';
 import DetailContent from '../components/details/DetailContent.jsx';
 import CommentBox from '../components/CommentBox.jsx';
 import RecommendationNav from '../components/RecommendationNav.jsx';
+import { useTranslation } from "react-i18next";
 
 const DetailPage = () => {
 
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Find the current cocktail by slug
   const cocktail = cocktails.find(value => value.slug === slug);
@@ -28,7 +30,7 @@ const DetailPage = () => {
   if (!cocktail) {
     return (
       <div className="flex items-center justify-center h-screen text-xl font-semibold">
-        Cocktail not found!
+        {t("cocktailNotFound")}
       </div>
     );
   }
@@ -39,10 +41,10 @@ const DetailPage = () => {
 
         {/* BACK BUTTON */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
           className="mb-6 sm:mb-4 md:mb-1 lg:mb-2 text-[#E17C55] hover:underline active:underline flex items-center gap-2 cursor-pointer pl-2 md:pl-4 text-sm md:text-md"
         >
-          ← Back to cocktails
+          ← {t("backTo")}
         </button>
 
         <div className='flex flex-col md:flex-row gap-10 w-full'>

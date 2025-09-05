@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import FilterModal from "./FilterModal";
+import { useTranslation } from "react-i18next";
 
 const TabBar = ({ setActiveTab, activeTab }) => {
 
@@ -9,6 +10,7 @@ const TabBar = ({ setActiveTab, activeTab }) => {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className="flex justify-between items-center mx-4 sm:mx-6 md:mx-8 lg:mx-14">
@@ -21,7 +23,7 @@ const TabBar = ({ setActiveTab, activeTab }) => {
             }`}
           onClick={() => handleTabClick("all")}
         >
-          All Cocktails
+          {t("allCocktails")}
         </button>
         <button
           className={`px-3 py-2 md:px-4 font-medium text-sm md:text-base rounded-md cursor-pointer active:scale-95 ${activeTab === "favorites"
@@ -30,7 +32,7 @@ const TabBar = ({ setActiveTab, activeTab }) => {
             }`}
           onClick={() => handleTabClick("favorites")}
         >
-          Favorites
+          {t("favorites")}
         </button>
       </div>
 
@@ -40,7 +42,7 @@ const TabBar = ({ setActiveTab, activeTab }) => {
         onClick={() => setIsOpen(true)}
       >
         <FaFilter className="text-[#3DA7AF]" />
-        <span className="hidden sm:flex">Filter</span>
+        <span className="hidden sm:flex">{t("filter")}</span>
       </button>
 
       {isOpen && <FilterModal isOpen={isOpen} setIsOpen={setIsOpen} />}

@@ -2,15 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchHistory } from "../../redux/slices/searchSlice";
-import cocktails from "../../data/cocktails"; // database
+import cocktails from "../../data/cocktails";
 import { useNavigate } from "react-router-dom";
 import slugify from "../../utils/slugify";
+import { useTranslation } from "react-i18next";
 
 const SearchBar = () => {
 
   const dispatch = useDispatch();
   const history = useSelector((state) => state.search.history);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [input, setInput] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -72,7 +74,7 @@ const SearchBar = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onFocus={() => setShowDropdown(true)}
-          placeholder="Search cocktails..."
+          placeholder={t("placeholders.searchPlaceholder")}
           className="w-full border border-[#E17C55] rounded-lg px-10 py-2 focus:outline-none focus:ring-1 focus:ring-[#E17C55]"
         />
       </form>
@@ -98,7 +100,7 @@ const SearchBar = () => {
                 </div>
               ))
             ) : (
-              <div className="px-4 py-2 text-gray-400">No history</div>
+              <div className="px-4 py-2 text-gray-400">{t("noHistory")}</div>
             )
           ) : (
             // SUGGESTIONS
@@ -119,7 +121,7 @@ const SearchBar = () => {
                 </div>
               ))
             ) : (
-              <div className="px-4 py-2 text-gray-400">No results</div>
+              <div className="px-4 py-2 text-gray-400">{t("noResults")}</div>
             )
           )}
         </div>

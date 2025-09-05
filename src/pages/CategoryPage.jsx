@@ -4,18 +4,22 @@ import FloatingQuizModal from '../components/quiz/FloatingQuizButton.jsx';
 import cocktails from '../data/cocktails.js'; // Cocktails data file
 import HeartButton from "../components/HeartButton.jsx";
 import slugify from '../utils/slugify.js';
+import { useTranslation } from "react-i18next";
 
 const CategoryPage = () => {
 
     const { slug } = useParams();
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
 
     const cocktail = cocktails.filter(value => slugify(value.category) === slug);
+    const cocktailCategory = cocktails.find(value => slugify(value.category) === slug);
+    console.log("kategori", cocktailCategory);
 
     if (!cocktail) {
         return (
             <div className="flex items-center justify-center h-screen text-xl font-semibold">
-                Cocktail not found!
+                {t("cocktailNotFound")}
             </div>
         );
     }
@@ -29,14 +33,15 @@ const CategoryPage = () => {
                     onClick={() => navigate(-1)}
                     className="mb-6 md:mb-0 text-[#E17C55] hover:underline active:underline flex items-center gap-2 cursor-pointer pl-2 md:pl-4 text-sm md:text-md"
                 >
-                    ← Go back
+                    ← {t("goBack")}
                 </button>
 
                 <div className='text-3xl uppercase mb-6 md:mb-10 font-semibold'>
-                    {(slug === "hot-cocktail" || slug === "beer-cocktail") ? (
-                        <p>{slug.replace("-", " ")}S</p>
+                    {cocktailCategory.category === "Hot Cocktail" ||
+                        cocktailCategory.category === "Beer Cocktail" ? (
+                        <p>{t(`categories.${cocktailCategory.category}`)}{t(`categorySuffix.twoWords`)}</p>
                     ) : (
-                        <p>{slug.replace("-", " ")} COCKTAILS</p>
+                        <p>{t(`categories.${cocktailCategory.category}`)} {t(`categorySuffix.oneWord`)}</p>
                     )}
                 </div>
 
@@ -53,15 +58,13 @@ const CategoryPage = () => {
                                     <HeartButton cocktail={value} size={22} />
                                 </div>
 
-                                <p className="my-1 text-sm lg:text-base">{value.category}</p>
-                                {value.tasteProfile && (
-                                    <p className="text-xs md:text-sm mb-2 text-[#E37C55]">
-                                        {value.tasteProfile
-                                            .map(item => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
-                                            .join(", ")}
-                                    </p>
-                                )}
-                                <p className="line-clamp-5">{value.introduction}</p>
+                                <p className="text-sm lg:text-base">{t(`categories.${value.category}`)}</p>
+                                <div className='text-[#D8825D]'>
+                                    {value.tasteProfile
+                                    .map(item => t(`tasteProfiles.${item}`))
+                                    .join(", ")}
+                                </div>
+                                <p className="mt-2 text-stone-500 line-clamp-5">{value.introduction[i18n.language]}</p>
                             </div>
 
                         </div>

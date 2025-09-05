@@ -7,10 +7,12 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import categories from "../../data/categories.js";
 import slugify from "../../utils/slugify.js";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
 
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     return (
         <footer className="w-full border-t border-[#DC8158] bg-[#EEDFD7] mt-20">
@@ -24,31 +26,30 @@ const Footer = () => {
                         className="w-50 md:w-40 h-auto mb-4"
                         onClick={() => navigate("/")}
                     />
-                    <p className="text-sm leading-6">
-                        Discover the art of cocktail making with curated recipes,
-                        expert tips, and endless inspiration. Shake, stir, and savor your perfect drink!
+                    <p className="text-base leading-6">
+                        {t("footer.introText")}
                     </p>
                 </div>
 
                 {/* MENU LINKS */}
                 <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                    <h3 className="text-lg font-semibold mb-4">{t("footer.quickLinks")}</h3>
                     <ul className="space-y-2">
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Home</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Cocktails</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">About Us</NavLink></li>
-                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">Contact</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{t("footer.home")}</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{t("footer.cocktails")}</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{t("footer.aboutUs")}</NavLink></li>
+                        <li><NavLink to="/" className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{t("footer.contact")}</NavLink></li>
                     </ul>
                 </div>
 
                 {/* COCKTAIL CATEGORIES */}
                 <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold mb-4">Cocktail Categories</h3>
+                    <h3 className="text-lg font-semibold mb-4">{t("footer.cocktailCategories")}</h3>
                     <ul className="space-y-2">
                         {categories.map((value) => {
                             return (
                                 <li>
-                                    <NavLink to={`/category/${slugify(value)}`} className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{value}</NavLink>
+                                    <NavLink to={`/category/${slugify(value)}`} className="hover:text-[#3DA7AF] active:text-[#3DA7AF] transition">{t(`categories.${value}`)}</NavLink>
                                 </li>
                             )
                         })}
@@ -57,8 +58,8 @@ const Footer = () => {
 
                 {/* CONTACT */}
                 <div className='flex flex-col items-center'>
-                    <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
-                    <p className="text-sm mb-4">Follow us for daily cocktail inspiration!</p>
+                    <h3 className="text-lg font-semibold mb-4">{t("footer.stayConnected")}</h3>
+                    <p className="text-sm mb-4">{t("footer.followUs")}</p>
                     <div className="flex space-x-4">
                         <a href="https://www.instagram.com/" target="_blank" className="text-[#3DA7AF] hover:text-[#DE7D5B] transition text-xl">
                             <FaInstagram />
@@ -76,7 +77,7 @@ const Footer = () => {
 
             {/* RIGHTS */}
             <div className="border-t border-[#DC8158] text-center py-4 text-sm">
-                © {new Date().getFullYear()} SHAKE'N SIP. All Rights Reserved.
+                © {new Date().getFullYear()} SHAKE'N SIP. {t("footer.rights")}
             </div>
         </footer>
 

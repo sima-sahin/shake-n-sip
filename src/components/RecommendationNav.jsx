@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import categories from "../data/categories";
 import slugify from "../utils/slugify";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const RecommendationNav = ({ currentCategory }) => {
+
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const currentIndex = categories.indexOf(currentCategory);
 
@@ -22,7 +25,7 @@ const RecommendationNav = ({ currentCategory }) => {
     console.log("prev", prevCategory);
 
     return (
-        <div className="mt-10 pt-6 flex items-center justify-between w-[80%] mx-auto">
+        <div className="mt-10 pt-6 flex items-center justify-between w-[90%] sm:w-[85%] md:w-[80%] mx-auto">
 
             {/* LEFT */}
             {prevCategory ? (
@@ -33,9 +36,10 @@ const RecommendationNav = ({ currentCategory }) => {
                     <span className="text-sm"><FaAnglesLeft /></span>
                     <span className="font-medium text-sm md:text-md lg:text-lg">
                         {(prevCategory === "Hot Cocktail" || prevCategory === "Beer Cocktail")
-                            ? `${prevCategory}s`
-                            : `${prevCategory} Cocktails`}
+                            ? `${t(`categories.${prevCategory}`)}${t("categorySuffix.twoWords")}`
+                            : `${t(`categories.${prevCategory}`)} ${t("categorySuffix.oneWord")}`}
                     </span>
+
                 </button>
             ) : (
                 <div />
@@ -52,8 +56,8 @@ const RecommendationNav = ({ currentCategory }) => {
                 >
                     <span className="font-medium text-sm md:text-md lg:text-lg">
                         {(nextCategory === "Hot Cocktail" || nextCategory === "Beer Cocktail")
-                            ? `${nextCategory}s`
-                            : `${nextCategory} Cocktails`}
+                            ? `${t(`categories.${nextCategory}`)}${t("categorySuffix.twoWords")}`
+                            : `${t(`categories.${nextCategory}`)} ${t("categorySuffix.oneWord")}`}
                     </span>
                     <span className="text-sm"><FaAnglesRight /></span>
                 </button>

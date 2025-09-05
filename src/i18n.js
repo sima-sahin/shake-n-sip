@@ -1,31 +1,19 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import en from "./locales/en/translation.json";
+import tr from "./locales/tr/translation.json";
 
-// Local translations
+// LOCAL TRANSLATIONS
 const resources = {
-  en: {
-    translation: {
-      welcome: "Welcome to Shake'n Sip",
-      favorites: "Favorites",
-      allCocktails: "All Cocktails",
-      filter: "Filter",
-    },
-  },
-  tr: {
-    translation: {
-      welcome: "Shake'n Sip'e Hoşgeldin",
-      favorites: "Favoriler",
-      allCocktails: "Tüm Kokteyller",
-      filter: "Filtrele",
-    },
-  },
+  en: { translation: en },
+  tr: { translation: tr },
 };
 
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem("language") || "en", // localStorage’dan oku
+    lng: localStorage.getItem("language") || "en",
     fallbackLng: "en",
     interpolation: { escapeValue: false },
   });

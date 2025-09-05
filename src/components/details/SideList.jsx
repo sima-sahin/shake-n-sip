@@ -1,8 +1,11 @@
 import React from "react";
-import cocktails from "../../data/cocktails"; // Import the cocktails array
-import SideContainer from "./SideContainer"; // Assuming Container is your wrapper component
+import cocktails from "../../data/cocktails";
+import SideContainer from "./SideContainer";
+import { useTranslation } from "react-i18next";
 
 const SideList = ({ cocktail }) => {
+
+  const { t } = useTranslation();
   if (!cocktail || !cocktail.tasteProfile) return null;
 
   // Get the taste profile of the current cocktail
@@ -27,7 +30,7 @@ const SideList = ({ cocktail }) => {
 
   return (
     <div className="">
-      <h2 className="text-3xl md:text-2xl font-semibold md:font-bold mb-8 md:mb-6 mt-10 md:mt-0 md:text-left">SAME TASTE PROFILES</h2>
+      <h2 className="text-3xl md:text-2xl font-semibold md:font-bold mb-8 md:mb-6 mt-10 md:mt-0 md:text-left uppercase">{t(`side.sameHeader`)}</h2>
       <ul className="flex flex-col gap-4 space-y-2 md:space-y-0">
         {similarCocktails.map(c => (
           <SideContainer key={c.slug} value={c} />

@@ -1,12 +1,46 @@
-# React + Vite
+# Shake n' Sip 🍹
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Demo](https://shake-n-sip.netlify.app/)
 
-Currently, two official plugins are available:
+**Shake n' Sip** is an interactive React application where users can answer a series of questions to discover the cocktail that best fits their taste. The quiz system and results navigation create a fun and user-friendly experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Quiz System**: Tracks user preferences and suggests cocktails accordingly.
+- **i18n Support**: English (`en`) and Turkish (`tr`) languages.
+- **Responsive Design**: Optimized for both mobile and desktop devices.
+- **Animations**: Smooth, modern animations using Framer Motion.
+- **State Management**: Global state management using Redux Toolkit.
+- **Notifications**: Informative toast messages using React Toastify.
+- **TailwindCSS + DaisyUI**: Rapid and modern UI development.
+
+---
+
+## 🛠 Technologies Used
+
+### Core
+- [React](https://reactjs.org/) – Frontend library
+- [React Router DOM](https://reactrouter.com/) – Page routing
+- [Redux Toolkit](https://redux-toolkit.js.org/) & [React Redux](https://react-redux.js.org/) – State management
+- [Firebase](https://firebase.google.com/) – Backend and data storage
+- [i18next & react-i18next](https://react.i18next.com/) – Multi-language support
+- [TailwindCSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/) – UI and styling
+- [Framer Motion](https://www.framer.com/motion/) – Animations
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction) – Toast notifications
+- [React Icons](https://react-icons.github.io/react-icons/) – Icons
+
+### Development
+- [Vite](https://vitejs.dev/) – Build tool & development server
+- [ESLint](https://eslint.org/) – Code linting and quality
+- [TypeScript types](https://www.typescriptlang.org/) – Type support (optional)
+
+---
+
+## ⚡ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/sima-sahin/shake-n-sip.git
+cd shake-n-sip

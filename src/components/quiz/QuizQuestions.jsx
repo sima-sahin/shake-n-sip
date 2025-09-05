@@ -3,8 +3,11 @@ import quizQuestions from "../../data/quiz";
 import { motion } from "framer-motion";
 import colors from "../../utils/colors.js";
 import normalizeQuestion from "../../utils/normalizeQuestion.js";
+import { useTranslation } from "react-i18next";
 
 const QuizQuestions = ({ isOpen, onClose, handleBack, handleRestart, currentQuestionId, selectedAnswer, setSelectedAnswer, handleAnswer, history }) => {
+
+    const { t, i18n } = useTranslation();
 
     // Map of questions for quick access
     const questionMap = useMemo(() => {
@@ -29,10 +32,10 @@ const QuizQuestions = ({ isOpen, onClose, handleBack, handleRestart, currentQues
                 {/* Modal */}
                 <div className="absolute inset-x-0 top-10 mx-auto w-[90%] h-[600px] sm:w-[80%] sm:h-[600px] md:w-[600px] md:h-[600px] rounded-xl bg-[#FFF9F1] p-4 md:p-6 shadow-lg">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-lg font-bold">Find Your Cocktail Quiz</h2>
+                        <h2 className="text-lg font-semibold">{t("quiz.title")}</h2>
                         <button
                             onClick={onClose}
-                            className="rounded px-1 py-1 text-md cursor-pointer"
+                            className="rounded px-1 py-1 text-lg cursor-pointer"
                             aria-label="Close"
                         >
                             ✕
@@ -41,7 +44,7 @@ const QuizQuestions = ({ isOpen, onClose, handleBack, handleRestart, currentQues
 
                     {currentQuestion ? (
                         <>
-                            <p className={`${isSpecial ? 'text-lg md:text-2xl leading-snug m-4 p-2 lg:p-2' : 'text-2xl md:text-3xl m-6 p-4 lg:p-6'}`}>{currentQuestion.question}</p>
+                            <p className={`${isSpecial ? 'text-lg md:text-2xl leading-snug m-4 p-2 lg:p-2' : 'text-2xl md:text-3xl m-6 p-4 lg:p-6'}`}>{currentQuestion.question[i18n.language]}</p>
 
                             <div className="grid gap-3 mx-6 md:mx-10">
                                 {currentQuestion.answers.map((ans, i) => {
@@ -66,7 +69,7 @@ const QuizQuestions = ({ isOpen, onClose, handleBack, handleRestart, currentQues
                                             }}
                                             transition={{ duration: 0.3 }}
                                         >
-                                            <span className="relative z-10">{ans.label}</span>
+                                            <span className="relative z-10">{ans.label[i18n.language]}</span>
                                         </motion.button>
                                     );
                                 })}
@@ -78,24 +81,24 @@ const QuizQuestions = ({ isOpen, onClose, handleBack, handleRestart, currentQues
                                     disabled={history.length === 0}
                                     className="rounded-md border border-[#7B3306] text-[#7B3306] px-3 py-2 text-sm disabled:opacity-50 hover:bg-[#E17C55] cursor-pointer hover:text-[#FFF9F1] active:bg-[#E17C55] active:text-[#FFF9F1] active:scale-95"
                                 >
-                                    ← Back
+                                    ← {t("quiz.back")}
                                 </button>
                                 <button
                                     onClick={handleRestart}
                                     className="rounded-md border border-[#7B3306] text-[#7B3306] px-3 py-2 text-sm hover:bg-[#E17C55] cursor-pointer hover:text-[#FFF9F1] active:bg-[#E17C55] active:text-[#FFF9F1] active:scale-95">
-                                    Restart
+                                    {t("quiz.restart")}
                                 </button>
                             </div>
                         </>
                     ) : (
                         <div className="text-sm text-[#A63C3C]">
-                            Question not found (id: {currentQuestionId}). Check your flow.
+                            {t("quiz.questionNotFound")} (id: {currentQuestionId}).
                             <div className="mt-3">
                                 <button
                                     onClick={handleRestart}
                                     className="rounded border px-3 py-2 text-sm hover:bg-[#FFF9F1] active:scale-95"
                                 >
-                                    Restart
+                                    {t("quiz.restart")}
                                 </button>
                             </div>
                         </div>

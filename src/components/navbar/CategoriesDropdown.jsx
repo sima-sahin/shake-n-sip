@@ -4,11 +4,13 @@ import { BiCategory } from "react-icons/bi";
 import categories from '../../data/categories';
 import { Link } from 'react-router-dom';
 import slugify from "../../utils/slugify.js";
+import { useTranslation } from "react-i18next";
 
 const CategoriesDropdown = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const { t } = useTranslation();
 
     const handleToggle = () => setIsOpen(prev => !prev);
     const handleClose = () => setIsOpen(false);
@@ -36,7 +38,7 @@ const CategoriesDropdown = () => {
                 className="btn m-1 bg-transparent border-none shadow-none text-[#7B3306] flex items-center gap-2 px-3 py-2 rounded-lg transition"
             >
                 <BiCategory className='md:hidden text-lg sm:text-xl' />
-                <span className="hidden md:inline text-base hover:underline active:underline">Categories</span>
+                <span className="hidden md:inline text-base hover:underline active:underline">{t("detail.categories")}</span>
                 <FaChevronDown className="text-xs sm:text-sm -ml-1 md:ml-0" />
             </div>
 
@@ -52,7 +54,7 @@ const CategoriesDropdown = () => {
                             onClick={handleClose} // Close modal
                             className='hover:bg-[#EEDFD7] p-2 rounded-lg block'
                         >
-                            {value}
+                            {t(`categories.${value}`)}
                         </Link>
                     ))}
                 </ul>
