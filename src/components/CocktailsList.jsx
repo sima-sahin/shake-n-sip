@@ -50,7 +50,7 @@ function CocktailsList({ activeTab }) {
 
   return (
     <div ref={listRef}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4 sm:mx-6 md:mx-8 lg:mx-14">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mx-2 sm:mx-6 md:mx-8 lg:mx-14">
         {filteredCocktails.length <= 0 ? (
           <div className="text-lg my-6">{t("noFavorites")}</div>
         ) : (
@@ -64,11 +64,11 @@ function CocktailsList({ activeTab }) {
                 <img
                   src={value.image}
                   alt={value.name}
-                  className="w-full h-70 object-cover rounded"
+                  className="w-full h-55 sm:h-60 md:h-70 object-cover rounded"
                 />
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold">{value.name}</h2>
+                    <h2 className="text-lg sm:text-xl font-bold">{value.name}</h2>
                     <HeartButton cocktail={value} size={22} />
                   </div>
                   <p className="my-1 text-sm lg:text-base">
@@ -79,7 +79,7 @@ function CocktailsList({ activeTab }) {
                       {value.tasteProfile.map((item) => t(`tasteProfiles.${item}`)).join(", ")}
                     </p>
                   )}
-                  <p className="text-stone-500 line-clamp-5">
+                  <p className="text-stone-500 line-clamp-4 md:line-clamp-5 text-sm sm:text-base">
                     {value.introduction[i18n.language]}
                   </p>
                 </div>

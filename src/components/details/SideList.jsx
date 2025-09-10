@@ -29,9 +29,9 @@ const SideList = ({ cocktail }) => {
     .slice(0, 10); // Limit to 10 items
 
   return (
-    <div className="">
+    <div>
       <h2 className="text-3xl md:text-2xl font-semibold md:font-bold mb-8 md:mb-6 mt-10 md:mt-0 md:text-left uppercase">{t(`side.sameHeader`)}</h2>
-      <ul className="flex flex-col gap-4 space-y-2 md:space-y-0">
+      <ul className="mx-auto grid grid-cols-2 gap-2 sm:grid-cols-2 md:flex md:flex-col space-y-4 md:gap-4 md:space-y-0">
         {similarCocktails.map(c => (
           <SideContainer key={c.slug} value={c} />
         ))}
