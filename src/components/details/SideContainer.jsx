@@ -13,12 +13,12 @@ const Container = ({ value }) => {
   return (
     <div
       onClick={handleClick}
-      className="bg-amber-50 rounded-lg w-[80%] h-[500px] mx-auto md:w-[250px] lg:w-[300px] md:h-[350px] overflow-hidden cursor-pointer hover:scale-102 active:scale-95 transition-transform duration-300 text-left shadow-md"
+      className="bg-amber-50 rounded-lg w-[95%] h-[410px] mx-auto md:w-[250px] lg:w-[300px] md:h-[350px] overflow-hidden cursor-pointer hover:scale-102 active:scale-95 transition-transform duration-300 text-left shadow-md"
     >
       <img
         src={value.image}
         alt={value.name}
-        className="w-full h-80 md:h-40 object-cover"
+        className="w-full h-55 md:h-40 object-cover"
       />
       <div className="p-4">
         <div className="flex items-center justify-between">

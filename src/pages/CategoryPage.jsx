@@ -5,6 +5,7 @@ import cocktails from '../data/cocktails.js'; // Cocktails data file
 import HeartButton from "../components/HeartButton.jsx";
 import slugify from '../utils/slugify.js';
 import { useTranslation } from "react-i18next";
+import RecommendationNav from "../components/RecommendationNav.jsx";
 
 const CategoryPage = () => {
 
@@ -70,6 +71,8 @@ const CategoryPage = () => {
                         </div>
                     ))}
                 </div>
+
+                <RecommendationNav currentCategory={cocktailCategory.category} />
 
             </div>
 

@@ -13,7 +13,7 @@ const TabBar = ({ setActiveTab, activeTab }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-between items-center mx-4 sm:mx-6 md:mx-8 lg:mx-14">
+    <div className="flex justify-between items-center mx-2 sm:mx-6 md:mx-8 lg:mx-14">
       {/* LEFT - TABS */}
       <div className="flex space-x-2 md:space-x-4">
         <button

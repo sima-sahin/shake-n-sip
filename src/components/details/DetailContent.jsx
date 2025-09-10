@@ -36,8 +36,9 @@ const DetailContent = ({ cocktail, slug }) => {
   const handleCopy = async () => {
     try {
       const textToCopy = cocktail.ingredients
-        .map((ing) => `${ing.name} — ${convertAmount(ing.amount)}`)
+        .map((ing) => `${ing.name[i18n.language]} — ${convertAmount(ing.amount)}`)
         .join("\n");
+
 
       await navigator.clipboard.writeText(textToCopy);
 
@@ -76,12 +77,12 @@ const DetailContent = ({ cocktail, slug }) => {
 
       {/* NAME */}
       <div className="flex-1 mx-auto px-4 md:px-0">
-        
+
         {/* CATEGORY */}
         <div className="text-xl uppercase hover:underline active:underline mb-4">
           <Link to={`/category/${slugify(cocktail.category)}`}>
             {cocktail.category === "Hot Cocktail" ||
-            cocktail.category === "Beer Cocktail" ? (
+              cocktail.category === "Beer Cocktail" ? (
               <p>{t(`categories.${cocktail.category}`)}{t(`categorySuffix.twoWords`)}</p>
             ) : (
               <p>{t(`categories.${cocktail.category}`)} {t(`categorySuffix.oneWord`)}</p>
@@ -118,21 +119,19 @@ const DetailContent = ({ cocktail, slug }) => {
           <div className="absolute top-4 right-3 flex items-center gap-2 bg-[#eedfd7] rounded px-2 py-1">
             <button
               onClick={() => setUnit("oz")}
-              className={`px-2 py-1 text-xs md:text-sm font-semibold rounded transition-all duration-300 cursor-pointer ${
-                unit === "oz"
+              className={`px-2 py-1 text-xs md:text-sm font-semibold rounded transition-all duration-300 cursor-pointer ${unit === "oz"
                   ? "bg-[#3DA7AF] text-[#FFF9F1] scale-105"
                   : " hover:bg-[#73aeb2] hover:text-[#FFF9F1] active:bg-[#73aeb2] active:text-[#FFF9F1] active:scale-95"
-              }`}
+                }`}
             >
               oz
             </button>
             <button
               onClick={() => setUnit("cl")}
-              className={`px-2 py-1 text-xs md:text-sm font-semibold rounded transition-all duration-300 cursor-pointer  ${
-                unit === "cl"
+              className={`px-2 py-1 text-xs md:text-sm font-semibold rounded transition-all duration-300 cursor-pointer  ${unit === "cl"
                   ? "bg-[#3DA7AF] text-[#FFF9F1] scale-105"
                   : "hover:bg-[#73aeb2] hover:text-[#FFF9F1] active:bg-[#73aeb2] active:text-[#FFF9F1] active:scale-95"
-              }`}
+                }`}
             >
               cl
             </button>
@@ -167,11 +166,10 @@ const DetailContent = ({ cocktail, slug }) => {
                   }}
                 />
                 <span
-                  className={`${
-                    checkedItems.includes(index)
+                  className={`${checkedItems.includes(index)
                       ? "line-through text-[#3DA7AF]"
                       : ""
-                  }`}
+                    }`}
                 >
                   {ing.name[i18n.language]} — {convertAmount(ing.amount)}
                 </span>
